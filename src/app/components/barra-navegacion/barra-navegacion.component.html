@@ -1,0 +1,40 @@
+<section class="div-btn-menu w-100">
+    <div class=" letra-pagina-1 h2 text-white h4 btn-menu pt-3" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Mi cuenta</div>
+</section>
+<div class="d-flex justify-content-center align-items-center bg-dark">
+    <img src="assets/img/logo.png" class="w-25" alt="">
+</div>
+<nav class="container-fluid py-3 sticky-top ">
+    <div class="d-flex justify-content-center">
+        <div class="d-flex">
+            <div class="h3 letra-pagina-1 mx-4" routerLink="/">Inicio</div>
+            <div class="h3 letra-pagina-1 mx-4" routerLink="/empanadas">Productos</div>
+        </div>
+    </div>
+</nav>
+
+<div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header d-flex justify-content-end">
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" #btnCloseBarra></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="d-flex flex-column justify-content-center align-items-center h-100">
+            <div class="d-flex justify-content-center flex-column align-items-center">
+                <h3 class="h1 fw-bold letra-pagina-1 py-4 text-white">Cuenta</h3>
+                <ng-container *ngIf="!_usuarioService.estaLogueado(); else seccionPerfil">
+                    <div class="letra-pagina-1 h3 py-2 text-white" routerLink="/ingreso">Iniciar sesión</div>
+                    <div class="letra-pagina-1 h3 py-2 text-white" routerLink="/registro">Registro</div>
+                </ng-container>
+                <ng-template #seccionPerfil>
+                    <div class="letra-pagina-1 h3 py-2 text-white" routerLink="/ingreso">Mi perfil</div>
+                    <div class="letra-pagina-1 h3 py-2 text-white" (click)="cerrarSesion()">Cerrar Sesión</div>
+                </ng-template>
+            </div>
+            <div class="d-flex justify-content-center flex-column align-items-center">
+                <h3 class="h1 fw-bold letra-pagina-1 py-4 text-white">Administración</h3>
+                <div class="letra-pagina-1 h3 py-2 text-white" routerLink="/admin/usuarios-registrados">Lista de usuarios</div>
+                <div class="letra-pagina-1 h3 py-2 text-white" routerLink="/admin/gestion-empanadas">Lista de empanadas</div>
+            </div>
+        </div>
+    </div>
+</div>
